@@ -127,11 +127,8 @@ public class Auction
     }
     
     /**
-     * 
-     * Partiendo del código terminado de la actividad 0060, añade un método denominado getUnsold a la clase Auction
-     * que devuelva una colección de todos los items por los que no habido ninguna puja en este momento; este método no debe imprimir nada por pantalla.
-     * Testea los cambios y haz un commit.
-     * Sube el proyecto a GitHub e indica la URL de este commit.
+     * Métpdo que  devuelve una colección de todos los items por los que no habido ninguna puja en este momento; 
+     * este método no debe imprimir nada por pantalla.
      */
     public ArrayList<Lot> getUnsold()
     {
