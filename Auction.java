@@ -99,4 +99,23 @@ public class Auction
             return null;
         }
     }
+    
+    /**
+     * Este método muestra por pantalla los detalles de todos los items que se estén subastando actualmente. 
+     * De aquellos por los que haya habido pujas indica el nombre de la persona que ha hecho la puja más alta y el valor de dicha puja;
+     * del resto indica que no ha habido pujas..
+     */
+    public void close()
+    {
+        for(Lot lot : lots) {
+            System.out.println(lot.toString());
+            if (lot.getHighestBid() !=null) {
+                System.out.println("La persona que ha hecho la puja más alta es " + lot.getHighestBid().getBidder().getName());
+                System.out.println("Y el valor de la puja es: " + lot.getHighestBid().getValue());
+            }
+            else {
+                System.out.println("No ha habido ninguna puja por este item.");
+            }
+        }
+    }
 }
