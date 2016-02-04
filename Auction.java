@@ -14,6 +14,8 @@ public class Auction
     // The number that will be given to the next lot entered
     // into this auction.
     private int nextLotNumber;
+    // Colección de todos los items que no tienen ninguna puja
+    private ArrayList<Lot> lotsSinPujas;
 
     /**
      * Create a new auction.
@@ -21,6 +23,7 @@ public class Auction
     public Auction()
     {
         lots = new ArrayList<Lot>();
+        lotsSinPujas = new ArrayList<Lot>();
         nextLotNumber = 1;
     }
 
@@ -30,7 +33,9 @@ public class Auction
      */
     public void enterLot(String description)
     {
-        lots.add(new Lot(nextLotNumber, description));
+        Lot pipas = new Lot(nextLotNumber, description);
+        lots.add(pipas);
+        lotsSinPujas.add(pipas);
         nextLotNumber++;
     }
 
@@ -57,10 +62,12 @@ public class Auction
     {
         Lot selectedLot = getLot(lotNumber);
         if(selectedLot != null) {
+            lotsSinPujas.remove(selectedLot);
             boolean successful = selectedLot.bidFor(new Bid(bidder, value));
             if(successful) {
                 System.out.println("The bid for lot number " +
                                    lotNumber + " was successful.");
+                                   
             }
             else {
                 // Report which bid is higher.
@@ -117,5 +124,17 @@ public class Auction
                 System.out.println("No ha habido ninguna puja por este item.");
             }
         }
+    }
+    
+    /**
+     * 
+     * Partiendo del código terminado de la actividad 0060, añade un método denominado getUnsold a la clase Auction
+     * que devuelva una colección de todos los items por los que no habido ninguna puja en este momento; este método no debe imprimir nada por pantalla.
+     * Testea los cambios y haz un commit.
+     * Sube el proyecto a GitHub e indica la URL de este commit.
+     */
+    public ArrayList<Lot> getUnsold()
+    {
+        return lotsSinPujas;
     }
 }
